@@ -44,8 +44,14 @@ public class Main {
         Estudiante estudiante = new Estudiante(nombreEst, cedulaEst, carrera);
 
         // ---- Ingreso de notas ----
-        System.out.print("\n¿Cuántas notas deseas ingresar para este estudiante? ");
-        int cantidadNotas = sc.nextInt();
+        System.out.println();
+        int cantidadNotas;
+        do {
+            cantidadNotas = Entrada.leerEntero(sc, "¿Cuántas notas deseas ingresar para este estudiante? ");
+            if (cantidadNotas < 1) {
+                System.out.println("  Debes ingresar al menos 1 nota.");
+            }
+        } while (cantidadNotas < 1);
 
         profesor.ingresarNotas(estudiante, sc, cantidadNotas);
 
