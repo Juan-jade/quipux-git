@@ -41,8 +41,8 @@ public class Profesor extends Persona {
 
             // Repetimos hasta que el profesor ingrese una nota válida
             while (!esValida) {
-                System.out.print("  Nota #" + i + " (0.0 - 5.0): ");
-                nota = sc.nextDouble();
+                // Entrada.leerDouble repite la pregunta si escriben letras
+                nota = Entrada.leerDouble(sc, "  Nota #" + i + " (0.0 - 5.0): ");
 
                 if (nota >= 0.0 && nota <= 5.0) {
                     esValida = true;
