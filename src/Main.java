@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -56,7 +58,16 @@ public class Main {
         profesor.ingresarNotas(estudiante, sc, cantidadNotas);
 
         // ---- Resultado final ----
-        estudiante.mostrarInformacion();
+        // Polimorfismo: una sola lista de Persona guarda un Profesor y un
+        // Estudiante; al llamar mostrarInformacion() cada objeto responde
+        // con SU propia versión del método.
+        List<Persona> personas = new ArrayList<>();
+        personas.add(profesor);
+        personas.add(estudiante);
+
+        for (Persona persona : personas) {
+            persona.mostrarInformacion();
+        }
 
         sc.close();
     }
