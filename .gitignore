@@ -1,0 +1,14 @@
+# Archivos compilados de Java
+*.class
+out/
+bin/
+
+# IDEs y sistema operativo
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Dependencias que OpenCode pueda instalar dentro de .opencode
+# (la carpeta .opencode SÍ se sube al repositorio, solo se ignora esto)
+.opencode/node_modules/
