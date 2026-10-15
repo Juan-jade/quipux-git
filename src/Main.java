@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -44,13 +46,28 @@ public class Main {
         Estudiante estudiante = new Estudiante(nombreEst, cedulaEst, carrera);
 
         // ---- Ingreso de notas ----
-        System.out.print("\n¿Cuántas notas deseas ingresar para este estudiante? ");
-        int cantidadNotas = sc.nextInt();
+        System.out.println();
+        int cantidadNotas;
+        do {
+            cantidadNotas = Entrada.leerEntero(sc, "¿Cuántas notas deseas ingresar para este estudiante? ");
+            if (cantidadNotas < 1) {
+                System.out.println("  Debes ingresar al menos 1 nota.");
+            }
+        } while (cantidadNotas < 1);
 
         profesor.ingresarNotas(estudiante, sc, cantidadNotas);
 
         // ---- Resultado final ----
-        estudiante.mostrarInformacion();
+        // Polimorfismo: una sola lista de Persona guarda un Profesor y un
+        // Estudiante; al llamar mostrarInformacion() cada objeto responde
+        // con SU propia versión del método.
+        List<Persona> personas = new ArrayList<>();
+        personas.add(profesor);
+        personas.add(estudiante);
+
+        for (Persona persona : personas) {
+            persona.mostrarInformacion();
+        }
 
         sc.close();
     }
